@@ -26,6 +26,7 @@ public class Flink04_Source_Customer {
 
     }
 
+    //什么时候假如泛型呢？要看实现类，如果实现类里明确标注泛型，就必须写泛型。下行代码没有写泛型，上面代码标黄，没有变红
     public static class CustomerSource implements SourceFunction<SensorReading> {
         //定义标志位控制数据接收
         private boolean running = true;

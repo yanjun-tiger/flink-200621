@@ -42,7 +42,6 @@ public class Flink01_WordCount_Batch {
             String[] words = value.split(" ");
             //遍历words输出数据
             for (String word : words) {
-                //.collect是迭代器的方法吗？
                 out.collect(new Tuple2<>(word, 1));
             }
         }

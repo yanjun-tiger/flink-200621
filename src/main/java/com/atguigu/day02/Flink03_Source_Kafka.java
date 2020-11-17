@@ -26,7 +26,7 @@ public class Flink03_Source_Kafka {
         properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         properties.setProperty("auto.offset.reset", "latest");
 
-        //为什么泛型是string？ 难道是因为kafka获取的数据都是string类型的？
+        //为什么泛型是string？ 因为kafka反序列化之后，消费到的数据是string类型。默认object是因为还可以自定义kafka消费的数据类型
         DataStreamSource<String> kafkaDS = env.addSource(new FlinkKafkaConsumer011<String>("test",
                 new SimpleStringSchema(),
                 properties));
