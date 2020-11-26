@@ -13,7 +13,7 @@ public class Flink02_Source_File {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
 
-        //2.从文件读取数据
+        //2.从文件读取数据 创建流
         DataStreamSource<String> sensorDS = env.readTextFile("sensor");
 
         //3.打印

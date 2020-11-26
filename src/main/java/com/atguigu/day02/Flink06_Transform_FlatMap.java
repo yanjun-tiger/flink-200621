@@ -16,7 +16,7 @@ public class Flink06_Transform_FlatMap {
         //1 获取执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
-        //2 从文件中读取数据
+        //2 从文件中读取 数据流  ----要记得，flink里面都是数据流
         DataStreamSource<String> fileDS = env.readTextFile("sensor");
 
         //3 flatmap操作

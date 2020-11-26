@@ -20,8 +20,9 @@ public class Flink09_Transform_Reduce {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
 
-        //2 
+        //2 读取数据流
         DataStreamSource<String> fileDS = env.readTextFile("sensor");
+
         //3  把每一条数据转换成javabean
         SingleOutputStreamOperator<SensorReading> sensorDS = fileDS.map(new MapFunction<String, SensorReading>() {
             @Override
@@ -35,6 +36,7 @@ public class Flink09_Transform_Reduce {
 
         //4 分组
         KeyedStream<SensorReading, Tuple> keyedStream = sensorDS.keyBy("id");
+
         //5.计算每个传感器的最高温度以及最近的时间
         SingleOutputStreamOperator<SensorReading> reduce = keyedStream.reduce(new ReduceFunction<SensorReading>() {
             @Override

@@ -9,6 +9,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 import java.util.Properties;
 
 /**
+ * 从kafka读取数据 创建流
  * @author zhouyanjun
  * @create 2020-11-17 12:25
  */

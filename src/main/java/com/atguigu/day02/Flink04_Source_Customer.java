@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
+ * 我们希望可以随机生成传感器数据流
  * @author zhouyanjun
  * @create 2020-11-17 12:33
  */

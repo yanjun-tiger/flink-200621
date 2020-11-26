@@ -14,7 +14,7 @@ public class Flink07_Transform_Filter {
         //1 获取执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
-        //2 读取文件数据
+        //2 读取文件数据流
         DataStreamSource<String> fileDS = env.readTextFile("sensor");
         //3 过滤,取出30度以上的数据
         SingleOutputStreamOperator<String> filter = fileDS.filter(new FilterFunction<String>() {

@@ -20,7 +20,7 @@ public class Flink08_Transform_Max {
 
         //2 读取文件
         DataStreamSource<String> fileDS = env.readTextFile("sensor");
-        //3 将每一行数据转换为JavaBean why?
+        //3 将每一行数据转换为JavaBean
         SingleOutputStreamOperator<SensorReading> sensorDS = fileDS.map(new MapFunction<String, SensorReading>() {
             @Override
             public SensorReading map(String value) throws Exception {
@@ -30,8 +30,10 @@ public class Flink08_Transform_Max {
                         Double.parseDouble(split[2]));
             }
         });
+
         //4 按照id分组
         KeyedStream<SensorReading, Tuple> keyedStream = sensorDS.keyBy("id");
+
         //5 求每个传感器中最高温度
         SingleOutputStreamOperator<SensorReading> maxResult = keyedStream.max("temp");
         SingleOutputStreamOperator<SensorReading> maxByResult = keyedStream.maxBy("temp");
